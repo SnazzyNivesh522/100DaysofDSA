@@ -1,4 +1,3 @@
-
 public class CycleDetection{    
     static class ListNode {
         int val;
