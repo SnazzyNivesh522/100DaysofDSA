@@ -72,6 +72,23 @@ public class CycleDetection {
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
-        node4.next = node2; // Create the cycle
+        node4.next = node2; // the cycle
+
+        if (hasCycle(node1)){
+            System.out.println("Cycle detected!");
+            detectCycle(node4);
+        } 
+        else{
+            System.out.println("No cycle found.");
+        }
+
+        ListNode cycleStart = detectCycle(node1);
+        if (cycleStart != null) {
+            System.out.println("Cycle starts at node with value: " + cycleStart.val);
+        } else {
+            System.out.println("No cycle found.");
+        }
     }
+
+    
 }
