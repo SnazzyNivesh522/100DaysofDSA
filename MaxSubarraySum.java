@@ -44,8 +44,29 @@ public class MaxSubarraySum {
         System.out.println("Max sum is :"+maxSum);
 
     }
+    //kadanes algorithm
+    public static void kadaneAlgorithm(int arr[]) {
+        int n = arr.length;
+        int maxSum = Integer.MIN_VALUE;
+        int currsum=0;
+        for (int i = 0;i<n;i++){
+            currsum += arr[i];
+            if (currsum < 0)
+                currsum = 0;
+            maxSum=Math.max(currsum,maxSum);
+        }
+        System.out.println("The maximum contiguous sum is: "+maxSum);
+    }
     public static void main(String[] args) {
         int arr[] = { 1 , -2 , 6 , -1 , 3 };
         prefixSum(arr);
+        
+        int arr2[]={-2,-3,4,-1,-2,1,5,-3};
+        kadaneAlgorithm(arr2);
+
+        int arr3[]={-2,-3,-1,-2,-3};
+        kadaneAlgorithm(arr3);
+
+
     }
 }
