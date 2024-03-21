@@ -51,6 +51,7 @@ public class ReversingLinkedList {
         return current;
 
     }
+    
     public static void main(String[] args) {
         ReversingLinkedList rll = new ReversingLinkedList();
         ListNode head = new ListNode(1);
@@ -69,4 +70,5 @@ public class ReversingLinkedList {
         System.out.println("Reversed list");
         printList(newhead);
     }
+    
 }
