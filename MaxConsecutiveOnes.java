@@ -10,6 +10,7 @@ public class MaxConsecutiveOnes {
                 maxcount=Math.max(maxcount,count);
             }
             else{
+                
                 count=0;
                 left=right+1;
             }
