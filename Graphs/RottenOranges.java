@@ -29,6 +29,7 @@ Explanation: Since there are already no fresh oranges at minute 0, the answer is
 import java.util.LinkedList;
 import java.util.Queue;
 public class RottenOranges {
+    //approach BFS 
     public int orangesRotting(int[][] grid) {
         int rows = grid.length;
         int cols = grid[0].length;
