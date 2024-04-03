@@ -45,16 +45,16 @@ public class MaxSubarraySum {
 
     }
     //kadanes algorithm
-    public static void kadaneAlgorithm(int arr[]) {
-        int n = arr.length;
-        int maxSum = Integer.MIN_VALUE;
+    public static void kadaneAlgorithm(int nums[]) {
+        int maxSum = nums[0];
         int currsum=0;
-        for (int i = 0;i<n;i++){
-            currsum += arr[i];
-            if (currsum < 0)
-                currsum = 0;
+        for (int i = 0;i<nums.length;i++){
+            currsum += nums[i];
             maxSum=Math.max(currsum,maxSum);
+            if (currsum < 0)
+                currsum = 0;            
         }
+        // return maxSum;
         System.out.println("The maximum contiguous sum is: "+maxSum);
     }
     public static void main(String[] args) {
