@@ -3,6 +3,7 @@ import java.util.List;
 
 public class FindDuplicatesinArray {
     public List<Integer> findDuplicates(int[] nums) {
+        @SuppressWarnings({ "rawtypes", "unchecked" })
         List<Integer> result = new ArrayList();
         for(int n:nums){
             n=Math.abs(n);
