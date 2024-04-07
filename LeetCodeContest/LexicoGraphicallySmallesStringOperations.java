@@ -57,6 +57,7 @@ public class LexicoGraphicallySmallesStringOperations {
         return Math.min(diff, 26 - diff);
     }
     public String getSmallestString(String s, int k) {
+        if(k==0) return s;
         char[] result = s.toCharArray();
         for (int i = 0; i < s.length(); i++) {
             for (char c = 'a'; c <= 'z'; c++) {
@@ -75,5 +76,12 @@ public class LexicoGraphicallySmallesStringOperations {
         System.out.println(lgso.getSmallestString("zbbz",3));
         System.out.println(lgso.getSmallestString("xaxcd",4));
         System.out.println(lgso.getSmallestString("lol",0));
+
+        for (char c = 'a'; c <= 'z'; c++){
+            System.out.print(c+":");
+            System.out.print(lgso.distance('x', c));
+            System.out.println();
+        }
+        
     }
 }
