@@ -27,14 +27,27 @@ Follow-up: Could you solve the problem in linear time and in O(1) space?
 public class MajorityElement {
     public int majorityElement(int[] nums) {
         //Boyer-Moore Voting Algorithm
+        int size=nums.length;
         int count=0;
         int majority=nums[0];
         for(int n:nums){
-            if(count==0) majority=n;
+            if(count==0){
+               majority=n; 
+            } 
             if(n==majority) count++;
             else count--;
         }
-        return majority;
+        
+        if(count>0){
+            int majority_count=0;
+            for(int n:nums){
+                if(n==majority){
+                    majority_count++;
+                }
+            }
+            if(majority_count>size/2) return majority;
+        }
+        return -1;
         /* //brute force time o(2n) space o(n)
         HashMap<Integer,Integer> freqMap=new HashMap<>();
         int n=nums.length;
@@ -55,5 +68,7 @@ public class MajorityElement {
         MajorityElement me = new MajorityElement();
         System.out.println(me.majorityElement(new int[]{3,2,3}));
         System.out.println(me.majorityElement(new int[]{2,2,1,1,1,2,2}));
+        System.out.println(me.majorityElement(new int[]{1,13}));
+        System.out.println(me.majorityElement(new int[]{2, 2, 2, 1, 1, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 1, 2, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 2, 1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 2, 1, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2, 2, 1, 2, 2, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 1, 2, 2, 2, 2, 1, 1, 2, 1, 1, 1, 2}));
     }
 }
