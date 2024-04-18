@@ -16,60 +16,46 @@ all the three characters 0, 1 and 2
 exists. Hence, the answer is -1 in this case.
  */
 
-import java.util.Arrays;
-
 public class SmallestWindowContaining012 {
 
-    public static int findSmallestWindow(String str) {
-        int n = str.length();
-
-        // Arrays to store the first occurrences of characters 0, 1 and 2
-        int[] firstIndex = new int[3];
-        Arrays.fill(firstIndex, -1);
-
-        // Variable to store the current window end index
-        int currEnd = 0;
-
-        // Minimum window length seen so far
-        int minWindowLen = Integer.MAX_VALUE;
-
-        // Traverse the string
-        for (int i = 0; i < n; i++) {
-            char charAtI = str.charAt(i);
-
-            // Update the first occurrence of the current character
-            firstIndex[charAtI - '0'] = i;
-
-            // Slide the window until all characters are found
-            while (hasAllChars(firstIndex)) {
-                // Update the minimum window length
-                minWindowLen = Math.min(minWindowLen, i - currEnd + 1);
-
-                // Slide the window by incrementing the start index
-                currEnd++;
+    public static int smallestSubstring(String S) {
+        int n = S.length();
+        int freq[]=new int[3];
+        int left=0;
+        int window=-1;          
+        for(int right=0;right<n;right++){
+            if(S.charAt(right)=='0'){
+                freq[0]++;
+            }
+            if(S.charAt(right)=='1'){
+                freq[1]++;
+            }
+            if(S.charAt(right)=='2'){
+                freq[2]++;
+            }
+            while(freq[0]>0 && freq[1]>0 && freq[2]>0){
+                if(window==-1){
+                    window=right-left+1;
+                }
+                else{
+                    window=Math.min(window,right-left+1);
+                }
+                freq[S.charAt(left)-'0']--;
+                left++;
             }
         }
-
-        // Return -1 if no window is found
-        return minWindowLen == Integer.MAX_VALUE ? -1 : minWindowLen;
-    }
-
-    // Check if all characters (0, 1 and 2) have a valid first occurrence
-    private static boolean hasAllChars(int[] firstIndex) {
-        for (int i : firstIndex) {
-            if (i == -1) {
-                return false;
-            }
-        }
-        return true;
+        return window;
     }
 
     public static void main(String[] args) {
         String str1 = "01212";
         String str2 = "12121";
-
-        System.out.println("Smallest window in " + str1 + " is: " + findSmallestWindow(str1));
-        System.out.println("Smallest window in " + str2 + " is: " + findSmallestWindow(str2));
+        String str3= "1210";
+        String str="012";
+        System.out.println("Smallest window in " + str + " is: " + smallestSubstring(str));
+        System.out.println("Smallest window in " + str1 + " is: " + smallestSubstring(str1));
+        System.out.println("Smallest window in " + str2 + " is: " + smallestSubstring(str2));
+        System.out.println("Smallest window in " + str3 + " is: " + smallestSubstring(str3));
     }
 }
 
