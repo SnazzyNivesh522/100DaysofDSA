@@ -44,24 +44,41 @@ word consists of only lowercase and uppercase English letters.
 
  */
 
-import java.util.HashSet;
-import java.util.Set;
+
 
 public class CountNumberOfSpecialCharcterOne {
     public int numberOfSpecialChars(String word) {
-        Set<Character> lowercase = new HashSet<>();
-        Set<Character> uppercase = new HashSet<>();
-        
-        for (char c : word.toCharArray()) {
-            if (Character.isLowerCase(c)) {
-                lowercase.add(c);
-            } else {
-                uppercase.add(Character.toLowerCase(c));
+        int lower[]=new int[26];
+        int upper[]=new int[26];
+        int special=0;
+        for(char c:word.toCharArray()){
+            if(c>='a' && c<='z'){
+                lower[c-'a']=1;
+            }
+            else{
+                upper[c-'A']=1;
             }
         }
+        for(int i=0;i<26;i++){
+                if(lower[i]==1 && upper[i]==1){
+                    special++;
+                }
+            }
+            return special;
+       
+        // Set<Character> lowercase = new HashSet<>();
+        // Set<Character> uppercase = new HashSet<>();
         
-        lowercase.retainAll(uppercase);
-        return lowercase.size();
+        // for (char c : word.toCharArray()) {
+        //     if (Character.isLowerCase(c)) {
+        //         lowercase.add(c);
+        //     } else {
+        //         uppercase.add(Character.toLowerCase(c));
+        //     }
+        // }
+        
+        // lowercase.retainAll(uppercase);
+        // return lowercase.size();
     }
     public static void main(String[] args) {
         System.out.println(new CountNumberOfSpecialCharcterOne().numberOfSpecialChars("aaAbcBC"));
