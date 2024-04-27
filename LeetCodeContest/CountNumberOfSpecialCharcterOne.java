@@ -60,11 +60,11 @@ public class CountNumberOfSpecialCharcterOne {
             }
         }
         for(int i=0;i<26;i++){
-                if(lower[i]==1 && upper[i]==1){
-                    special++;
-                }
+            if(lower[i]==1 && upper[i]==1){
+                special++;
             }
-            return special;
+        }
+        return special;
        
         // Set<Character> lowercase = new HashSet<>();
         // Set<Character> uppercase = new HashSet<>();
