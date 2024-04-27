@@ -1,7 +1,6 @@
 package DynamicProgramming;
 
-import java.util.HashMap;
-import javafx.util.Pair;
+import java.util.Arrays;
 
 /*
 In the video game Fallout 4, the quest "Road to Freedom" requires players to reach a metal dial called the "Freedom Trail Ring" and use the dial to spell a specific keyword to open the door.
@@ -61,6 +60,7 @@ public class FreedomTrail {
     //     int steps=Integer.MAX_VALUE;
     //     return spell(0,ring,0,key,steps);
     // }
+    /*Top down approach time optimized but not space optimized
     private String ring, key;
     private HashMap<Pair<Integer, Integer>, Integer> memo;
     // r- index of ring, k - index of key
@@ -89,6 +89,32 @@ public class FreedomTrail {
         this.memo = new HashMap<>();
         return stepSpell(0, 0);
     }
+    */
+    //bottom up approach startin from reverse of key
+    public int findRotateSteps(String ring, String key){
+        int rlen=ring.length();
+        int klen=key.length();
+        int []dp=new int[rlen];
+        int []next_dp=new int[rlen];
+        Arrays.fill(dp,0);
+        for(int k=klen-1;k>=0;k--){
+            Arrays.fill(next_dp,Integer.MAX_VALUE);
+            for(int r=0;r<rlen;r++){
+                for(int i=0;i<rlen;i++){
+                    if(ring.charAt(i)==key.charAt(k)){
+                        int min_dist=Math.min(
+                        Math.abs(r-i),              //distance between
+                        ring.length()-Math.abs(r-i) //distance around
+                        );
+                        next_dp[r]=Math.min(next_dp[r],min_dist+1+dp[i]);
+                        // minSteps = Math.min(minSteps, min_dist + 1 + stepSpell(i, k + 1));
+                    }
+                }
+            }
+            dp=next_dp.clone();
+        }
+        return dp[0];
+    }
     public static void main(String[] args) {
         System.out.println(new FreedomTrail().findRotateSteps("godding","godding"));
 
@@ -97,5 +123,8 @@ public class FreedomTrail {
         System.out.println(new FreedomTrail().findRotateSteps("caotmcaataijjxi","oatjiioicitatajtijciocjcaaxaaatmctxamacaamjjx"));
 
         System.out.println(new FreedomTrail().findRotateSteps("bicligfijg","cgijcjlgiggigigijiiciicjilicjflccgilcflijgigbiifiggigiggibbjbijlbcifjlblfggiibjgblgfiiifgbiiciffgbfl"));
+        
+        System.out.println(new FreedomTrail().findRotateSteps("abccbaxbe", "abx"));
     }
+
 }
