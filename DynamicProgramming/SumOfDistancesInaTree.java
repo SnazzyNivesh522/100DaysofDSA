@@ -87,6 +87,8 @@ public class SumOfDistancesInaTree {
     }
     public static void main(String[] args) {
         System.out.println(Arrays.toString(new SumOfDistancesInaTree().sumOfDistancesInTree(6, new int[][]{{0,1},{0,2},{2,3},{2,4},{2,5}})));
+        System.out.println(Arrays.toString(new SumOfDistancesInaTree().sumOfDistancesInTree(1, new int[][]{})));
+        System.out.println(Arrays.toString(new SumOfDistancesInaTree().sumOfDistancesInTree(2, new int[][]{{1,0}})));
     }
     
 }
