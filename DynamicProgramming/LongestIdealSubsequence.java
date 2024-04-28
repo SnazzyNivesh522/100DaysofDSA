@@ -30,7 +30,7 @@ Constraints:
 0 <= k <= 25
 s consists of lowercase English letters.
  */
-package DynamicProgramming;
+
 
 public class LongestIdealSubsequence {
     public int longestIdealString(String s, int k) {

@@ -25,7 +25,7 @@ n == matrix.length == matrix[i].length
 1 <= n <= 100
 -100 <= matrix[i][j] <= 100
  */
-package DynamicProgramming;
+
 
 public class MinimumFallingPathSum1 {
     private int fMPS(int row,int col,int [][]matrix){

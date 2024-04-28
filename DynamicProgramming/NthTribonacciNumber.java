@@ -1,5 +1,3 @@
-package DynamicProgramming;
-
 /*
 The Tribonacci sequence Tn is defined as follows: 
 
