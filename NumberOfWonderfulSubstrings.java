@@ -57,7 +57,6 @@ import java.util.HashMap;
 public class NumberOfWonderfulSubstrings {
     //a-j means 0-9 
     public long wonderfulSubstrings(String word) {
-        int n=word.length();
         long wonderful=0L;
         int mask=0;
         // System.out.println((1<<10)+1);
