@@ -67,15 +67,52 @@ public class RemoveNodesFromLL {
     //     return result;
         
     // }
+    // public ListNode removeNodes(ListNode head){
+    //     if(head==null || head.next==null){
+    //         return head;
+    //     }
+    //     ListNode nextNode=removeNodes(head.next);
+    //     if(head.val<nextNode.val){
+    //         return nextNode;
+    //     }
+    //     head.next=nextNode;
+    //     return head;
+    // }
+    private ListNode reverseList(ListNode head) {
+        if(head==null) return null;
+        ListNode prev=null;
+        ListNode current=head;
+        ListNode nxt=current.next;
+        while(nxt!=null){
+            current.next=prev;
+            prev=current;
+            current=nxt;
+            nxt=nxt.next;
+        }
+        current.next=prev;    
+        return current;
+    }
     public ListNode removeNodes(ListNode head){
-        if(head==null || head.next==null){
-            return head;
+        //reversing list
+        head=reverseList(head);
+        
+        int currmax=0;
+        ListNode prev=null,current=head;
+
+        while(current!=null){
+            currmax=Math.max(currmax,current.val);
+            if(current.val<currmax){
+                prev.next=current.next;
+                ListNode temp=current;
+                current=current.next;
+                temp.next=null;
+            }
+            else{
+                prev=current;
+                current=current.next;
+            }
         }
-        ListNode nextNode=removeNodes(head.next);
-        if(head.val<nextNode.val){
-            return nextNode;
-        }
-        head.next=nextNode;
+        head=reverseList(head);
         return head;
     }
     public static void main(String[] args) {
