@@ -27,7 +27,7 @@ than all the elements to its right.
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class LeaderInArray{
+public class LeaderInArray {
     static ArrayList<Integer> leaders(int arr[], int n){
         int max=arr[n-1];
         ArrayList<Integer> result = new ArrayList<>();
