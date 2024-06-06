@@ -125,7 +125,7 @@ public class ReverseWordsInAString {
             i++;
         }
         int slice = removeMultipleSpaces(str);
-        return new String(str).substring(0, slice);
+        return new String(str, 0 ,slice);
     }
     public static void main(String[] args) {
         //test cases
