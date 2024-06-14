@@ -27,7 +27,6 @@ import java.util.HashMap;
 
 public class SubArraySumsDivisiblebyK {
     public int subarraysDivByK(int[] nums, int k) {
-        int n = nums.length;
         int prefixSum = 0;
         int count = 0;
         HashMap<Integer, Integer> remainderCount = new HashMap<>();

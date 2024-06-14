@@ -63,7 +63,6 @@ public class HeightChecker {
         return count;
     }
     public int heightChecker(int[] heights) {
-        int n = heights.length;
         int expected[] = heights.clone();
         int count=countSort(expected,heights);
         // int count = 0;
