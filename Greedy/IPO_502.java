@@ -76,6 +76,6 @@ public class IPO_502{
         profits = new int[]{1,2,3};
         capital = new int[]{0,1,2};
         System.out.println(ipo.findMaximizedCapital(3, 0, profits, capital));
-        
+
     }
 }
