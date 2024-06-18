@@ -37,7 +37,6 @@ m == worker.length
 public class MostProfitAssigningWork {
     public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
         int n=difficulty.length;
-        int m=worker.length;
         List<int[]> job=new ArrayList<>(); //consists of difficulty and corresponding profit
         for(int i=0;i<n;i++){
             job.add(new int[]{difficulty[i],profit[i]});
@@ -47,7 +46,7 @@ public class MostProfitAssigningWork {
 
         int totalProfit=0;
         int maxProfit=0;
-        int jobIndex=0;;
+        int jobIndex=0;
         for(int ability:worker){
             while(jobIndex<n && job.get(jobIndex)[0]<=ability){
                 maxProfit=Math.max(maxProfit,job.get(jobIndex)[1]);
