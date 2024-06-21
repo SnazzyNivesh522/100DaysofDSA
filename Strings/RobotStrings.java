@@ -10,29 +10,31 @@ You must perform either of the two moves mentioned above in such a way that
 the strings left with Ray and Ben are empty and the string left with Kevin is lexicographically the smallest. 
 Your task is to return this lexicographically smallest string that Kevin has after completing this activity.
 */
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Objects;
 import java.util.Stack;
 public class RobotStrings
 {
     private static String robotStrings(String Ray,String Ben,String Kevin){
         int n=Ray.length();
-        Stack<Character> stack=new Stack<>();
+        // Stack<Character> stack=new Stack<>();
         Stack<Character> benst=new Stack<>();
-        
+        Deque<Character> stack = new ArrayDeque<>();
         StringBuilder sb = new StringBuilder();
         int idx=0;
         for(int i=n-1;i>=0;i--){
-            if(stack.empty() || Ray.charAt(i)<=stack.peek()){
-                stack.push(Ray.charAt(i));
+            if(stack.isEmpty() || Ray.charAt(i)<=stack.peek()){
+                stack.offer(Ray.charAt(i));
                 
             }
         }
-        while(idx<n && !stack.empty()){
+        while(idx<n && !stack.isEmpty()){
             benst.push(Ray.charAt(idx++));
             if(Objects.equals(benst.peek(), stack.peek())){
                 sb.append(benst.pop());
                 stack.pop();
-                while(!benst.empty() && !stack.empty() && benst.peek()<=stack.peek()){
+                while(!benst.empty() && !stack.isEmpty() && benst.peek()<=stack.peek()){
                     sb.append(benst.pop());
                 }
             }
