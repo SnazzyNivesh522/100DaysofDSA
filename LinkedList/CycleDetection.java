@@ -14,7 +14,7 @@ There is a cycle in a linked list if there is some node in the list that can be 
 Do not modify the linked list.
  */
 public class CycleDetection{    
-    static class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
         public ListNode(int x) {
