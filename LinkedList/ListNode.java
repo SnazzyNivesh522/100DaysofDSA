@@ -11,4 +11,23 @@ public class ListNode {
         }
         System.out.println();
     }
+    public ListNode arrayToList(int[] arr) {
+      ListNode head = null;  // Initialize head as null for an empty list
+
+      for (int value : arr) {
+          ListNode newNode = new ListNode(value,null);  // Create a new node for each element
+          if (head == null) {
+              head = newNode;  // Set head for the first element
+          } else {
+              // Traverse to the last node and link the new node
+              ListNode current = head;
+              while (current.next != null) {
+                  current = current.next;
+              }
+              current.next = newNode;
+          }
+      }
+
+      return head;
+    }
 }
