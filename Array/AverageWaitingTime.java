@@ -40,10 +40,9 @@ arrivali <= arrivali+1
 public class AverageWaitingTime{
     public double averageWaitingTime(int[][] customers) {
         long waitTime = 0;
-        int startTime = 0;
         int endTime = 0;
         for (int customer[] : customers) {
-            startTime = Math.max(customer[0], endTime);
+            int startTime = Math.max(customer[0], endTime);
             endTime = startTime + customer[1];
 
             waitTime += endTime - customer[0];
